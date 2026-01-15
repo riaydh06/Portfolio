@@ -40,12 +40,15 @@ export default function Home() {
   ];
 
   const skills = [
+    { name: "JavaScript", level: 90 },
     { name: "React", level: 90 },
     { name: "Next.js", level: 85 },
     { name: "TypeScript", level: 88 },
-    { name: "Node.js", level: 80 },
-    { name: "Python", level: 75 },
-    { name: "UI/UX Design", level: 82 },
+    { name: "Redux", level: 80 },
+    { name: "Tailwind CSS", level: 80 },
+    { name: "HTML", level: 90 },
+    { name: "CSS", level: 90 },
+    { name: "Git", level: 90 },
   ];
 
   const projects = [
@@ -177,17 +180,17 @@ export default function Home() {
             id="home"
             className="min-h-screen flex items-center justify-center px-6 opacity-100 relative z-10"
           >
-            <div className="text-center max-w-4xl mx-auto">
+            <div className="text-center max-w-8xl mx-auto">
               <div className="mb-6 animate-bounce-slow">
                 <div className="inline-block p-4 rounded-full bg-white/80 shadow-lg animate-spin-slow">
                   <span className="text-6xl">👋</span>
                 </div>
               </div>
               <h1 className="text-6xl md:text-8xl font-bold mb-6 text-slate-800 animate-gradient">
-                Hi, I&apos;m Sayed Golam Rasul Riyadh
+                Hi, I&apos;m Sayed Golam Rasul Riaydh
               </h1>
               <p className="text-xl md:text-2xl text-slate-700 mb-8 animate-fade-in-up">
-                Full Stack Developer & Creative Problem Solver
+                Frontend Developer
               </p>
               <div className="flex gap-4 justify-center flex-wrap">
                 <button
@@ -239,7 +242,7 @@ export default function Home() {
               </h2>
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-indigo-200/50 hover:border-indigo-300/80 transition-all duration-300 hover:shadow-2xl shadow-lg">
                 <p className="text-lg text-indigo-900 leading-relaxed mb-4">
-                  I&apos;m a passionate full-stack developer with a love for
+                  I&apos;m a passionate frontend developer with a love for
                   creating beautiful, functional, and user-friendly
                   applications. With expertise in modern web technologies, I
                   bring ideas to life through clean code and innovative
