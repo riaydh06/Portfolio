@@ -36,8 +36,9 @@ export default function Home() {
     { name: "About", offset: 1 },
     { name: "Skills", offset: 2 },
     { name: "Experience", offset: 3 },
-    { name: "Projects", offset: 5 },
-    { name: "Contact", offset: 6 },
+    { name: "Education", offset: 5 },
+    { name: "Projects", offset: 6 },
+    { name: "Contact", offset: 7 },
   ];
 
   const skills = [
@@ -50,6 +51,15 @@ export default function Home() {
     { name: "HTML", level: 90 },
     { name: "CSS", level: 90 },
     { name: "Git", level: 90 },
+  ];
+
+  const education = [
+    {
+      institution: "Hajee Mohammad Danesh Science and Technology University",
+      location: "Dinajpur, Bangladesh",
+      degree: "BSc in CSE",
+      period: "January 2011 - December 2015",
+    },
   ];
 
   const experiences = [
@@ -192,7 +202,7 @@ export default function Home() {
 
       <Parallax
         ref={parallaxRef}
-        pages={7}
+        pages={8}
         style={{
           width: "100%",
           height: "100vh",
@@ -281,13 +291,13 @@ export default function Home() {
               </p>
               <div className="flex gap-4 justify-center flex-wrap">
                 <button
-                  onClick={() => scrollTo(5)}
+                  onClick={() => scrollTo(6)}
                   className="px-8 py-3 bg-slate-800 text-white rounded-full font-semibold hover:scale-110 transition-transform duration-300 shadow-lg hover:bg-slate-900 cursor-pointer"
                 >
                   View My Work
                 </button>
                 <button
-                  onClick={() => scrollTo(6)}
+                  onClick={() => scrollTo(7)}
                   className="px-8 py-3 border-2 border-slate-800 text-slate-800 rounded-full font-semibold hover:bg-slate-800 hover:text-white transition-all duration-300 cursor-pointer bg-transparent"
                 >
                   Get In Touch
@@ -495,8 +505,69 @@ export default function Home() {
           </section>
         </ParallaxLayer>
 
-        {/* Projects Section - Light Green Background with Image */}
+        {/* Education Section - Light Teal Background with Image */}
         <ParallaxLayer offset={5} speed={0} style={{ zIndex: 0 }}>
+          <div
+            className="absolute inset-0 w-full h-full"
+            style={{
+              backgroundImage:
+                "url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          />
+          <div
+            className="absolute inset-0 w-full h-full"
+            style={{
+              background:
+                "linear-gradient(to bottom, rgba(153, 246, 228, 0.75) 0%, rgba(94, 234, 212, 0.75) 50%, rgba(45, 212, 191, 0.75) 100%)",
+            }}
+          />
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={5} speed={0.1}>
+          <section
+            id="education"
+            className="py-20 px-6 relative min-h-screen flex items-center z-10"
+          >
+            <div className="max-w-4xl mx-auto w-full">
+              <h2 className="text-5xl font-bold text-center mb-12 text-teal-900">
+                Education
+              </h2>
+              <div className="space-y-6">
+                {education.map((edu, index) => (
+                  <div
+                    key={index}
+                    className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-teal-200/50 hover:border-teal-300/80 transition-all duration-300 hover:shadow-xl shadow-lg"
+                  >
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                      <div className="mb-2 md:mb-0">
+                        <h3 className="text-2xl font-bold text-teal-900 mb-1">
+                          {edu.degree}
+                        </h3>
+                        <p className="text-xl font-semibold text-teal-700 mb-1">
+                          {edu.institution}
+                        </p>
+                        <p className="text-sm text-teal-600">{edu.location}</p>
+                      </div>
+                      <span className="text-sm font-medium text-teal-800 bg-teal-100 px-3 py-1 rounded-full inline-block md:mt-0 mt-2">
+                        {edu.period}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </ParallaxLayer>
+
+        {/* Projects Section - Light Green Background with Image */}
+        <ParallaxLayer
+          offset={6}
+          speed={0}
+          style={{ zIndex: 0, height: "100vh" }}
+        >
           <div
             className="absolute inset-0"
             style={{
@@ -516,7 +587,7 @@ export default function Home() {
           />
         </ParallaxLayer>
 
-        <ParallaxLayer offset={5} speed={0.15}>
+        <ParallaxLayer offset={6} speed={0.15} style={{ zIndex: 10 }}>
           <section
             id="projects"
             className="py-20 px-6 relative min-h-screen flex items-center z-10"
@@ -561,7 +632,11 @@ export default function Home() {
         </ParallaxLayer>
 
         {/* Contact Section - Light Orange Background with Image */}
-        <ParallaxLayer offset={6} speed={0} style={{ zIndex: 0 }}>
+        <ParallaxLayer
+          offset={7}
+          speed={0}
+          style={{ zIndex: 0, height: "100vh" }}
+        >
           <div
             className="absolute inset-0"
             style={{
@@ -581,7 +656,7 @@ export default function Home() {
           />
         </ParallaxLayer>
 
-        <ParallaxLayer offset={6} speed={0.1}>
+        <ParallaxLayer offset={7} speed={0.1} style={{ zIndex: 10 }}>
           <section
             id="contact"
             className="py-20 px-6 relative min-h-screen flex items-center z-10"
@@ -590,6 +665,31 @@ export default function Home() {
               <h2 className="text-5xl font-bold text-center mb-12 text-orange-900">
                 Get In Touch
               </h2>
+
+              {/* Contact Information */}
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-orange-200/50 shadow-lg mb-6">
+                <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
+                  <a
+                    href="tel:+8801733784040"
+                    className="flex items-center gap-3 text-orange-900 hover:text-orange-700 transition-colors"
+                  >
+                    <span className="text-2xl">📞</span>
+                    <span className="text-lg font-semibold">
+                      +880 1733 784040
+                    </span>
+                  </a>
+                  <a
+                    href="mailto:riaydh06@gmail.com"
+                    className="flex items-center gap-3 text-orange-900 hover:text-orange-700 transition-colors"
+                  >
+                    <span className="text-2xl">✉️</span>
+                    <span className="text-lg font-semibold">
+                      riaydh06@gmail.com
+                    </span>
+                  </a>
+                </div>
+              </div>
+
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-orange-200/50 shadow-lg">
                 <form className="space-y-6">
                   <div>
@@ -635,7 +735,7 @@ export default function Home() {
         </ParallaxLayer>
 
         {/* Footer */}
-        <ParallaxLayer offset={6.8} speed={0}>
+        <ParallaxLayer offset={7.8} speed={0}>
           <footer className="py-8 px-6 border-t border-white/20">
             <div className="max-w-7xl mx-auto text-center text-slate-700">
               <p>
