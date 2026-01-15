@@ -35,8 +35,9 @@ export default function Home() {
     { name: "Home", offset: 0 },
     { name: "About", offset: 1 },
     { name: "Skills", offset: 2 },
-    { name: "Projects", offset: 3 },
-    { name: "Contact", offset: 4 },
+    { name: "Experience", offset: 3 },
+    { name: "Projects", offset: 5 },
+    { name: "Contact", offset: 6 },
   ];
 
   const skills = [
@@ -49,6 +50,92 @@ export default function Home() {
     { name: "HTML", level: 90 },
     { name: "CSS", level: 90 },
     { name: "Git", level: 90 },
+  ];
+
+  const experiences = [
+    {
+      company: "Vivasoft",
+      location: "Dhaka",
+      position: "Senior Software Engineer, L-III",
+      period: "Aug 2025 - PRESENT",
+      description:
+        "Working on Australia-based (Particular Audience) third-party projects (as a team member) using React, Mobx, Less, Antd",
+      tech: ["React", "Mobx", "Less", "Antd"],
+    },
+    {
+      company: "Penta Global Ltd",
+      location: "Dhaka",
+      position: "Senior Software Engineer (Team Lead)",
+      period: "June 2023 - July 2025",
+      description: [
+        "Working on US-based (Yaana) third-party projects (as a team member) using React, TypeScript, jQuery, Scss, Redux, Django, Jinja 2",
+        "Built a UI kit using React, scss, TypeScript, Jest, Storybook",
+        "Leading three projects (confidential) using React, scss, TypeScript, Redux, Context API, Axios, React Hook Form, yup",
+        "Frontend project planning, providing guidelines to team, ensuring best practices, responsible for code review, team management",
+        "Communicating with the backend team and supporting professional growth of team members through mentorship",
+      ],
+      tech: [
+        "React",
+        "TypeScript",
+        "Redux",
+        "SCSS",
+        "Django",
+        "Jest",
+        "Storybook",
+      ],
+    },
+    {
+      company: "Seedrs",
+      location: "Dhaka (remote)",
+      position: "Frontend Developer",
+      period: "February 2022 - May 2023",
+      description: [
+        "Developed and maintained features of https://www.seedrs.com/ using Next.js, React, TypeScript, Redux, Redux-thunk, REST-API, Axios, Docker, Webpack, Jest, Cypress, yup, formik",
+        "UI component development and API integration in the investor-web new portfolio profile",
+        "Entrepreneur Tax-Authorization Form and Business-Check implementation for entrepreneur-web",
+      ],
+      tech: ["Next.js", "React", "TypeScript", "Redux", "Docker", "Cypress"],
+    },
+    {
+      company: "Raremark",
+      location: "Dhaka (remote)",
+      position: "Frontend Developer",
+      period: "June 2020 - January 2022",
+      description: [
+        "Worked on https://raremark.com with React, Redux, Redux-thunk, TypeScript, Bootstrap, SCSS, REST-API, Axios, Next.js, Jest, redux-form, yup",
+        "Worked on https://xperiome.raremark.com/ with Next.js, Redux, Redux-thunk, Rest API, Axios, Jest, yup",
+        "Working on https://cahgenetherapy.com/ with Next.js, Redux, Redux-thunk, yup",
+      ],
+      tech: ["React", "Next.js", "TypeScript", "Redux", "SCSS", "Jest"],
+    },
+    {
+      company: "Circle Fintech Ltd",
+      location: "Dhaka",
+      position: "Software Engineer",
+      period: "December 2017 - May 2020",
+      description: [
+        "Used React-native and Redux for developing JustPay App 2nd Version",
+        "Worked on cross-platform mobile applications (Android & iOS) with Cordova, Monaca, and Vue.js (JustPay App 1st Version)",
+        "Worked for JustPay web with Vue.js, using Axios and Vuex for API integration and state management",
+        "Released applications to iOS and Google Play stores (1st and 2nd versions)",
+        "Created 25+ UI components for Connect-Aux mobile app",
+        "Contributed to Connect-Reach mobile with React-Native and GraphQL",
+        "React-Native UI component for Office",
+      ],
+      tech: ["React Native", "Vue.js", "Redux", "GraphQL", "Cordova", "Monaca"],
+    },
+    {
+      company: "It Solution",
+      location: "Dinajpur",
+      position: "Software Engineer",
+      period: "April 2017 - November 2017",
+      description: [
+        "Worked on their website (https://www.itsd.com.bd/) with WordPress",
+        "Cross-platform mobile application (Android) with Monaca, Cordova, and Vue.js for TableCartel App",
+        "Backend used WordPress database and connected the mobile app with Rest API",
+      ],
+      tech: ["WordPress", "Vue.js", "Cordova", "Monaca", "REST API"],
+    },
   ];
 
   const projects = [
@@ -105,7 +192,7 @@ export default function Home() {
 
       <Parallax
         ref={parallaxRef}
-        pages={5}
+        pages={7}
         style={{
           width: "100%",
           height: "100vh",
@@ -194,13 +281,13 @@ export default function Home() {
               </p>
               <div className="flex gap-4 justify-center flex-wrap">
                 <button
-                  onClick={() => scrollTo(3)}
+                  onClick={() => scrollTo(5)}
                   className="px-8 py-3 bg-slate-800 text-white rounded-full font-semibold hover:scale-110 transition-transform duration-300 shadow-lg hover:bg-slate-900 cursor-pointer"
                 >
                   View My Work
                 </button>
                 <button
-                  onClick={() => scrollTo(4)}
+                  onClick={() => scrollTo(6)}
                   className="px-8 py-3 border-2 border-slate-800 text-slate-800 rounded-full font-semibold hover:bg-slate-800 hover:text-white transition-all duration-300 cursor-pointer bg-transparent"
                 >
                   Get In Touch
@@ -321,8 +408,95 @@ export default function Home() {
           </section>
         </ParallaxLayer>
 
+        {/* Experience Section - Light Blue Background with Image */}
+        <ParallaxLayer
+          offset={3}
+          speed={0}
+          style={{ zIndex: 0, height: "200vh" }}
+        >
+          <div
+            className="absolute inset-0 w-full h-full"
+            style={{
+              backgroundImage:
+                "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          />
+          <div
+            className="absolute inset-0 w-full h-full"
+            style={{
+              background:
+                "linear-gradient(to bottom, rgba(191, 219, 254, 0.8) 0%, rgba(147, 197, 253, 0.8) 50%, rgba(96, 165, 250, 0.8) 100%)",
+            }}
+          />
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={3} speed={0.1}>
+          <section
+            id="experience"
+            className="py-20 px-6 relative flex items-start z-10"
+            style={{ minHeight: "200vh" }}
+          >
+            <div className="max-w-6xl mx-auto w-full py-20">
+              <h2 className="text-5xl font-bold text-center mb-12 text-blue-900">
+                Work Experience
+              </h2>
+              <div className="space-y-6">
+                {experiences.map((exp, index) => (
+                  <div
+                    key={index}
+                    className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-blue-200/50 hover:border-blue-300/80 transition-all duration-300 hover:shadow-xl shadow-lg"
+                  >
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                      <div className="mb-2 md:mb-0">
+                        <h3 className="text-2xl font-bold text-blue-900 mb-1">
+                          {exp.position}
+                        </h3>
+                        <p className="text-xl font-semibold text-blue-700">
+                          {exp.company}
+                        </p>
+                        <p className="text-sm text-blue-600">{exp.location}</p>
+                      </div>
+                      <span className="text-sm font-medium text-blue-800 bg-blue-100 px-3 py-1 rounded-full inline-block md:mt-0 mt-2">
+                        {exp.period}
+                      </span>
+                    </div>
+                    <div className="mb-4">
+                      {Array.isArray(exp.description) ? (
+                        <ul className="list-disc list-inside space-y-2 text-blue-900">
+                          {exp.description.map((desc, idx) => (
+                            <li key={idx} className="text-sm leading-relaxed">
+                              {desc}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="text-sm text-blue-900 leading-relaxed">
+                          {exp.description}
+                        </p>
+                      )}
+                    </div>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {exp.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 bg-blue-200 rounded-full text-xs border border-blue-300 text-blue-800 font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </ParallaxLayer>
+
         {/* Projects Section - Light Green Background with Image */}
-        <ParallaxLayer offset={3} speed={0} style={{ zIndex: 0 }}>
+        <ParallaxLayer offset={5} speed={0} style={{ zIndex: 0 }}>
           <div
             className="absolute inset-0"
             style={{
@@ -342,7 +516,7 @@ export default function Home() {
           />
         </ParallaxLayer>
 
-        <ParallaxLayer offset={3} speed={0.15}>
+        <ParallaxLayer offset={5} speed={0.15}>
           <section
             id="projects"
             className="py-20 px-6 relative min-h-screen flex items-center z-10"
@@ -387,7 +561,7 @@ export default function Home() {
         </ParallaxLayer>
 
         {/* Contact Section - Light Orange Background with Image */}
-        <ParallaxLayer offset={4} speed={0} style={{ zIndex: 0 }}>
+        <ParallaxLayer offset={6} speed={0} style={{ zIndex: 0 }}>
           <div
             className="absolute inset-0"
             style={{
@@ -407,7 +581,7 @@ export default function Home() {
           />
         </ParallaxLayer>
 
-        <ParallaxLayer offset={4} speed={0.1}>
+        <ParallaxLayer offset={6} speed={0.1}>
           <section
             id="contact"
             className="py-20 px-6 relative min-h-screen flex items-center z-10"
@@ -461,7 +635,7 @@ export default function Home() {
         </ParallaxLayer>
 
         {/* Footer */}
-        <ParallaxLayer offset={4.8} speed={0}>
+        <ParallaxLayer offset={6.8} speed={0}>
           <footer className="py-8 px-6 border-t border-white/20">
             <div className="max-w-7xl mx-auto text-center text-slate-700">
               <p>
