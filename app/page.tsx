@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Parallax, ParallaxLayer, IParallax } from "@react-spring/parallax";
 
 // Cloud SVG component for parallax layers - moved outside component
@@ -24,6 +24,8 @@ const Cloud = ({
 
 export default function Home() {
   const parallaxRef = useRef<IParallax>(null);
+  // Initialize as true on client, false on server to prevent hydration errors
+  const [isClient] = useState(() => typeof window !== "undefined");
 
   const scrollTo = (offset: number) => {
     if (parallaxRef.current) {
@@ -174,6 +176,34 @@ export default function Home() {
       image: "💼",
     },
   ];
+
+  if (!isClient) {
+    return (
+      <>
+        {/* Navigation - Fixed Outside Parallax */}
+        <nav className="fixed top-0 left-0 right-0 w-full backdrop-blur-md bg-white/30 border-b border-white/20 z-[1000]">
+          <div className="max-w-7xl mx-auto px-6 py-4">
+            <div className="flex justify-between items-center">
+              <div className="text-2xl font-bold text-slate-800">Portfolio</div>
+              <div className="hidden md:flex gap-8">
+                {navigationItems.map((item) => (
+                  <button
+                    key={item.name}
+                    className="text-sm text-slate-700 transition-colors duration-300 relative group font-medium cursor-pointer bg-transparent border-none"
+                  >
+                    {item.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
+          <div className="text-white text-xl">Loading...</div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
