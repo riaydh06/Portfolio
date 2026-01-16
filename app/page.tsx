@@ -36,9 +36,9 @@ export default function Home() {
     { name: "About", offset: 1 },
     { name: "Skills", offset: 2 },
     { name: "Experience", offset: 3 },
-    { name: "Education", offset: 5 },
-    { name: "Projects", offset: 6 },
-    { name: "Contact", offset: 7 },
+    { name: "Education", offset: 6 },
+    { name: "Projects", offset: 7 },
+    { name: "Contact", offset: 8 },
   ];
 
   const skills = [
@@ -202,7 +202,7 @@ export default function Home() {
 
       <Parallax
         ref={parallaxRef}
-        pages={8}
+        pages={9}
         style={{
           width: "100%",
           height: "100vh",
@@ -291,13 +291,19 @@ export default function Home() {
               </p>
               <div className="flex gap-4 justify-center flex-wrap">
                 <button
-                  onClick={() => scrollTo(6)}
-                  className="px-8 py-3 bg-slate-800 text-white rounded-full font-semibold hover:scale-110 transition-transform duration-300 shadow-lg hover:bg-slate-900 cursor-pointer"
+                  onClick={() => scrollTo(3)}
+                  className="px-8 py-3 border-2 border-slate-800 text-slate-800 rounded-full font-semibold hover:bg-slate-800 hover:text-white transition-all duration-300 cursor-pointer bg-transparent"
+                >
+                  Experience
+                </button>
+                <button
+                  onClick={() => scrollTo(7)}
+                  className="px-8 py-3 border-2 border-slate-800 text-slate-800 rounded-full font-semibold hover:bg-slate-800 hover:text-white transition-all duration-300 cursor-pointer bg-transparent"
                 >
                   View My Work
                 </button>
                 <button
-                  onClick={() => scrollTo(7)}
+                  onClick={() => scrollTo(8)}
                   className="px-8 py-3 border-2 border-slate-800 text-slate-800 rounded-full font-semibold hover:bg-slate-800 hover:text-white transition-all duration-300 cursor-pointer bg-transparent"
                 >
                   Get In Touch
@@ -410,7 +416,7 @@ export default function Home() {
         <ParallaxLayer
           offset={3}
           speed={0}
-          style={{ zIndex: 0, height: "200vh" }}
+          style={{ zIndex: 0, height: "300vh" }}
         >
           <div
             className="absolute inset-0 w-full h-full"
@@ -431,13 +437,13 @@ export default function Home() {
           />
         </ParallaxLayer>
 
-        <ParallaxLayer offset={3} speed={0.1}>
+        <ParallaxLayer offset={3} speed={0.1} style={{ overflow: "visible" }}>
           <section
             id="experience"
             className="py-20 px-6 relative flex items-start z-10"
-            style={{ minHeight: "200vh" }}
+            style={{ overflow: "visible" }}
           >
-            <div className="max-w-6xl mx-auto w-full py-20">
+            <div className="max-w-6xl mx-auto w-full py-12">
               <h2 className="text-5xl font-bold text-center mb-12 text-blue-900">
                 Work Experience
               </h2>
@@ -494,7 +500,7 @@ export default function Home() {
         </ParallaxLayer>
 
         {/* Education Section - Light Teal Background with Image */}
-        <ParallaxLayer offset={5} speed={0} style={{ zIndex: 0 }}>
+        <ParallaxLayer offset={6} speed={0} style={{ zIndex: 0 }}>
           <div
             className="absolute inset-0 w-full h-full"
             style={{
@@ -514,7 +520,7 @@ export default function Home() {
           />
         </ParallaxLayer>
 
-        <ParallaxLayer offset={5} speed={0.1}>
+        <ParallaxLayer offset={6} speed={0.1}>
           <section
             id="education"
             className="py-20 px-6 relative min-h-screen flex items-center z-10"
@@ -552,7 +558,7 @@ export default function Home() {
 
         {/* Projects Section - Light Green Background with Image */}
         <ParallaxLayer
-          offset={6}
+          offset={7}
           speed={0}
           style={{ zIndex: 0, height: "100vh" }}
         >
@@ -575,7 +581,7 @@ export default function Home() {
           />
         </ParallaxLayer>
 
-        <ParallaxLayer offset={6} speed={0.15} style={{ zIndex: 10 }}>
+        <ParallaxLayer offset={7} speed={0.15} style={{ zIndex: 10 }}>
           <section
             id="projects"
             className="py-20 px-6 relative min-h-screen flex items-center z-10"
@@ -621,7 +627,7 @@ export default function Home() {
 
         {/* Contact Section - Light Orange Background with Image */}
         <ParallaxLayer
-          offset={7}
+          offset={8}
           speed={0}
           style={{ zIndex: 0, height: "100vh" }}
         >
@@ -644,7 +650,7 @@ export default function Home() {
           />
         </ParallaxLayer>
 
-        <ParallaxLayer offset={7} speed={0.1} style={{ zIndex: 10 }}>
+        <ParallaxLayer offset={8} speed={0.1} style={{ zIndex: 10 }}>
           <section
             id="contact"
             className="py-20 px-6 relative min-h-screen flex items-center z-10"
@@ -723,7 +729,7 @@ export default function Home() {
         </ParallaxLayer>
 
         {/* Footer */}
-        <ParallaxLayer offset={7.8} speed={0}>
+        <ParallaxLayer offset={8.5} speed={0}>
           <footer className="py-8 px-6 border-t border-white/20">
             <div className="max-w-7xl mx-auto text-center text-slate-700">
               <p>
