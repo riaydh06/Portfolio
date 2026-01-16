@@ -394,22 +394,10 @@ export default function Home() {
                       animationDelay: `${index * 100}ms`,
                     }}
                   >
-                    <div className="flex justify-between items-center mb-3">
+                    <div>
                       <span className="text-lg font-semibold text-pink-900">
                         {skill.name}
                       </span>
-                      <span className="text-pink-700 font-medium">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div className="w-full bg-pink-200 rounded-full h-3 overflow-hidden">
-                      <div
-                        className="h-full bg-gradient-to-r from-pink-500 to-pink-700 rounded-full transition-all duration-1000 ease-out"
-                        style={{
-                          width: `${skill.level}%`,
-                          animationDelay: `${index * 100}ms`,
-                        }}
-                      />
                     </div>
                   </div>
                 ))}
