@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Sayed Golam Rasul Riyadh - Portfolio",
-  description: "Full Stack Developer & Creative Problem Solver - Portfolio showcasing projects, skills, and experience",
+  description:
+    "Full Stack Developer & Creative Problem Solver - Portfolio showcasing projects, skills, and experience",
 };
 
 export default function RootLayout({
