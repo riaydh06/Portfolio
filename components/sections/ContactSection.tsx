@@ -1,7 +1,78 @@
+'use client'
+
+import { useState, FormEvent } from 'react'
 import { ParallaxLayer } from '@react-spring/parallax'
 import { BackgroundLayer } from '../BackgroundLayer'
 
 export const ContactSection = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: '',
+    })
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [submitStatus, setSubmitStatus] = useState<{
+        type: 'success' | 'error' | null
+        message: string
+    }>({ type: null, message: '' })
+
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+        const { name, value } = e.target
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }))
+        // Clear status when user starts typing
+        if (submitStatus.type) {
+            setSubmitStatus({ type: null, message: '' })
+        }
+    }
+
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        setIsSubmitting(true)
+        setSubmitStatus({ type: null, message: '' })
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+
+            const data = await response.json()
+
+            if (response.ok) {
+                setSubmitStatus({
+                    type: 'success',
+                    message: 'Message sent successfully! I\'ll get back to you soon.',
+                })
+                // Reset form
+                setFormData({
+                    name: '',
+                    email: '',
+                    message: '',
+                })
+            } else {
+                setSubmitStatus({
+                    type: 'error',
+                    message: data.error || 'Failed to send message. Please try again.',
+                })
+            }
+        } catch (error) {
+            setSubmitStatus({
+                type: 'error',
+                message: 'An error occurred. Please try again later.',
+            })
+        } finally {
+            setIsSubmitting(false)
+        }
+    }
+
     return (
         <>
             <BackgroundLayer
@@ -46,42 +117,83 @@ export const ContactSection = () => {
                         </div>
 
                         <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-orange-200/50 shadow-lg">
-                            <form className="space-y-6">
+                            {submitStatus.type && (
+                                <div
+                                    className={`mb-6 p-4 rounded-lg ${submitStatus.type === 'success'
+                                        ? 'bg-green-100 text-green-800 border border-green-300'
+                                        : 'bg-red-100 text-red-800 border border-red-300'
+                                        }`}
+                                >
+                                    <p className="text-sm font-medium">
+                                        {submitStatus.message}
+                                    </p>
+                                </div>
+                            )}
+
+                            <form onSubmit={handleSubmit} className="space-y-6">
                                 <div>
-                                    <label className="block text-sm font-medium mb-2 text-orange-900">
+                                    <label
+                                        htmlFor="name"
+                                        className="block text-sm font-medium mb-2 text-orange-900"
+                                    >
                                         Name
                                     </label>
                                     <input
                                         type="text"
+                                        id="name"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        required
                                         className="w-full px-4 py-3 bg-white/90 border border-orange-300 rounded-lg focus:outline-none focus:border-orange-500 transition-colors text-orange-900"
                                         placeholder="Your Name"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium mb-2 text-orange-900">
+                                    <label
+                                        htmlFor="email"
+                                        className="block text-sm font-medium mb-2 text-orange-900"
+                                    >
                                         Email
                                     </label>
                                     <input
                                         type="email"
+                                        id="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        required
                                         className="w-full px-4 py-3 bg-white/90 border border-orange-300 rounded-lg focus:outline-none focus:border-orange-500 transition-colors text-orange-900"
                                         placeholder="your.email@example.com"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium mb-2 text-orange-900">
+                                    <label
+                                        htmlFor="message"
+                                        className="block text-sm font-medium mb-2 text-orange-900"
+                                    >
                                         Message
                                     </label>
                                     <textarea
+                                        id="message"
+                                        name="message"
                                         rows={5}
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        required
                                         className="w-full px-4 py-3 bg-white/90 border border-orange-300 rounded-lg focus:outline-none focus:border-orange-500 transition-colors resize-none text-orange-900"
                                         placeholder="Your message..."
                                     />
                                 </div>
                                 <button
                                     type="submit"
-                                    className="w-full px-8 py-3 bg-orange-600 text-white rounded-lg font-semibold hover:scale-105 transition-transform duration-300 shadow-lg hover:bg-orange-700"
+                                    disabled={isSubmitting}
+                                    className={`w-full px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg ${isSubmitting
+                                        ? 'bg-orange-400 cursor-not-allowed'
+                                        : 'bg-orange-600 hover:scale-105 hover:bg-orange-700'
+                                        } text-white`}
                                 >
-                                    Send Message
+                                    {isSubmitting ? 'Sending...' : 'Send Message'}
                                 </button>
                             </form>
                         </div>
