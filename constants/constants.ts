@@ -117,27 +117,39 @@ export const experiences = [
 
 export const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "A full-stack e-commerce solution with payment integration",
-    tech: ["Next.js", "TypeScript", "Stripe"],
+    title: "Bangladesh Election Commission admin dashboard and online nomination portal",
+    description: "Admin dashboard and online nomination portal for Bangladesh Election Commission",
+    tech: ["React", "TypeScript", "React-Router", "Axio", "Redux", "Sass", "Jest", "Storybook"],
     image: "🛒",
   },
   {
-    title: "Task Management App",
-    description: "Collaborative task management with real-time updates",
-    tech: ["React", "Node.js", "WebSocket"],
+    title: "Seedrs",
+    description: "Seedrs is a platform for investing in early-stage startups. It allows users to browse and invest in startups, and to track their investments.",
+    tech: ["Next.js", "TypeScript", "React-Router", "Axio", "Redux", "Sass", "Jest", "Storybook"],
     image: "📋",
   },
   {
-    title: "AI Chat Assistant",
-    description: "Intelligent chatbot with natural language processing",
-    tech: ["Python", "OpenAI", "FastAPI"],
+    title: "Raremark",
+    description: "Raremark is a platform for creating and sharing rare Disease Diagnosis and Treatment",
+    tech: ["Next.js", "TypeScript", "React-Router", "Axios", "Redux", "Sass", "Jest", "Storybook"],
     image: "🤖",
   },
   {
-    title: "Portfolio Website",
-    description: "Modern portfolio with smooth animations",
-    tech: ["Next.js", "Tailwind", "Framer Motion"],
+    title: "Cahgenetherapy",
+    description: "Cahgenetherapy is a platform for creating and sharing rare Disease Diagnosis and Treatment",
+    tech: ["Next.js", "TypeScript", "React-Router", "Axios", "Redux", "Sass", "Jest", "Storybook"],
+    image: "🤖",
+  },
+  {
+    title: "JustPay",
+    description: "JustPay was a mobile banking app for Jumuman Bank",
+    tech: ["React Native", "Redux", "Axios", "Styled Components"],
     image: "💼",
+  },
+  {
+    title: "Connect-Aux",
+    description: "Connect-Aux is a mobile app",
+    tech: ["React Native", "Redux", "Axios", "Styled Components"],
+    image: "🤖",
   },
 ];
